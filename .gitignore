@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+data/source/*.csv
+outputs/*.csv
+outputs/*.duckdb
+*.duckdb

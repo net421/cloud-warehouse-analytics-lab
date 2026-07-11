@@ -1,9 +1,10 @@
-# Redshift vs Synapse Concept Comparison
+# Redshift vs Azure Synapse
 
-| Area | Redshift | Synapse |
+| Concern | Redshift | Synapse dedicated SQL |
 |---|---|---|
-| Ecosystem | AWS-centered analytics warehouse | Azure-centered analytics platform |
-| Optimization | Distribution/sort key concepts | Dedicated/serverless pool concepts |
-| Common Use Case | BI and analytical workloads on AWS | BI, lake, and warehouse integration on Azure |
+| Distribution | DISTKEY / EVEN / ALL | HASH / ROUND_ROBIN / REPLICATE |
+| Ordering/storage | sort keys | clustered columnstore |
+| Fast creation | CTAS | CTAS |
+| Lake access | Spectrum / S3 | serverless SQL / ADLS |
 
-This is a conceptual comparison for portfolio evidence, not a production benchmark.
+Use hash distribution on high-volume join keys when skew is controlled, and replicate small dimensions.
