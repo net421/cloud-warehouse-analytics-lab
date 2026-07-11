@@ -1,15 +1,3 @@
-# Snowflake-Style Warehouse Design
+# Snowflake warehouse design
 
-## Conceptual Architecture
-
-- Raw zone: source-aligned landing tables.
-- Clean zone: typed, deduplicated and standardized tables.
-- Mart zone: fact and dimension tables for BI.
-- Access model: analyst role reads marts; engineering role maintains transformations; admin owns warehouse configuration.
-
-## Demonstrated Concepts
-
-- Separation of storage and compute.
-- Role-based access model.
-- Warehouse sizing considerations.
-- Mart-first consumption layer.
+Use separate compute for ingestion, transformation, BI, and ad hoc development. Keep immutable source-aligned data in `RAW`, curated facts/marts in `ANALYTICS`, and exceptions in `QUALITY`. Start with the smallest auto-suspending warehouse and optimize only after inspecting query profiles and pruning.

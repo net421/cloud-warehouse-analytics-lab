@@ -1,9 +1,3 @@
-# Databricks Lakehouse Concepts
+# Lakehouse concepts
 
-This lab frames Databricks concepts as a lakehouse pattern:
-
-- Bronze: raw ingestion
-- Silver: cleaned and standardized data
-- Gold: BI-ready marts and business metrics
-- Delta Lake: ACID-style table reliability for lake data
-- PySpark: distributed transformation pattern
+Bronze preserves source records and ingestion metadata. Silver enforces types, deduplicates, and conforms entities. Gold provides business-grain facts and BI-ready marts. In a live Delta environment, add schema enforcement, merge-based incrementals, time travel, data skipping, and quality expectations.

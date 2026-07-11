@@ -1,9 +1,8 @@
--- Redshift/Synapse-style SQL pattern example
+-- Redshift
+create table analytics.fct_order_lines distkey(order_id) sortkey(order_date) as
+select * from staging.stg_order_lines;
 
-select
-    date_trunc('month', order_date) as order_month,
-    region,
-    count(distinct order_id) as orders,
-    sum(total_amount) as revenue
-from fact_orders
-group by 1, 2;
+-- Synapse dedicated SQL pool
+create table analytics.fct_order_lines
+with(distribution=hash(order_id),clustered columnstore index) as
+select * from staging.stg_order_lines;
